@@ -85,9 +85,7 @@
             color: #f0f6fc;
             font-size: 1.3rem;
             margin: 0 0 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-transform: capitalize;
         }
         .project-card p {
             color: var(--text-muted);
@@ -112,21 +110,22 @@
 
         <main>
             <h2 class="section-title">I Miei Esercizi Online</h2>
-            
             <div class="projects-grid">
                 
-                <!-- CARD ANAGRAFICA (INSERITA MANUALE, QUESTA FUNZIONA DI SICURO) -->
-                <a href="anagrafica.html" class="project-card">
-                    <div>
-                        <h3 class="card-title">💻 Anagrafica</h3>
-                        <p>Applicazione web per la gestione e l'inserimento di dati in una tabella dinamica.</p>
-                    </div>
-                    <span class="card-link">Apri lavoro →</span>
-                </a>
-
-                <!-- COME AGGIUNGERE I PROSSIMI: 
-                     Ti basterà copiare da qui sotto fino a </a>, 
-                     incollarlo subito qui e cambiare il nome del file in href -->
+                <!-- Il motore interno di GitHub Pages genera l'elenco automatico dei file -->
+                {% assign pagine = site.pages | sort: 'url' %}
+                {% for pagina in pagine %}
+                    {% assign nome_file = pagina.url | split: "/" | last %}
+                    {% if nome_file contains '.html' and nome_file != 'index.html' %}
+                        <a href="{{ pagina.url }}" class="project-card">
+                            <div>
+                                <h3 class="card-title">💻 {{ nome_file | replace: '.html', '' | replace: '_', ' ' | replace: '-', ' ' }}</h3>
+                                <p>Applicazione web salvata nel repository del corso. Clicca sotto per avviarla ed eseguirla direttamente sul browser.</p>
+                            </div>
+                            <span class="card-link">Apri lavoro →</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
 
             </div>
         </main>
@@ -134,4 +133,3 @@
 
 </body>
 </html>
-
