@@ -5,35 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-    <title>TPS_4 | lavori sul web development per il corso TPSIT del 3 anno</title>
-    <meta name="generator" content="Jekyll v3.10.0" />
-    <meta property="og:title" content="TPS_4" />
-    <meta property="og:locale" content="it_IT" />
-    <meta name="description" content="lavori sul web development per il corso TPSIT del 3 anno" />
-    <meta property="og:description" content="lavori sul web development per il corso TPSIT del 3 anno" />
-    <link rel="canonical" href="https://github.io" />
-    <meta property="og:url" content="https://github.io" />
-    <meta property="og:site_name" content="TPS_4" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="TPS_4" />
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "description": "lavori sul web development per il corso TPSIT del 3 anno",
-      "headline": "TPS_4",
-      "name": "TPS_4",
-      "url": "https://github.io"
-    }
-    </script>
-    <!-- End Jekyll SEO tag -->
+    <title>TPS_4 | Lavori Web Development</title>
 
-    <!-- Foglio di stile principale di GitHub Pages -->
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- Stile personalizzato avanzato (Colori, Riquadri e Bordi) -->
+    <!-- Stile personalizzato stile GitHub Dark -->
     <style>
         :root {
             --bg-color: #0d1117;
@@ -53,17 +27,20 @@
         }
 
         .custom-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 60px auto;
             padding: 0 20px;
         }
 
-        /* Stile dell'intestazione principale */
         .main-header {
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 20px;
             margin-bottom: 40px;
             text-align: center;
+        }
+
+        .main-header h1 {
+            margin: 0;
         }
 
         .main-header h1 a {
@@ -72,11 +49,6 @@
             font-weight: 800;
             letter-spacing: 1px;
             font-size: 2.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .main-header h1 a:hover {
-            color: #79c0ff;
         }
 
         .subtitle {
@@ -85,19 +57,39 @@
             margin-top: 10px;
         }
 
+        .section-title {
+            color: #f0f6fc;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        /* Griglia dei Progetti */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
         /* Riquadro Elegante (Card) */
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* Linea colorata decorativa in cima al riquadro */
         .project-card::before {
             content: "";
             position: absolute;
@@ -109,15 +101,16 @@
         }
 
         .project-card:hover {
-            transform: translateY(-2px);
-            border-color: #444c56;
+            transform: translateY(-4px);
+            border-color: #58a6ff;
+            box-shadow: 0 12px 30px rgba(88, 166, 255, 0.15);
         }
 
         .card-title {
             color: #f0f6fc;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -125,40 +118,61 @@
 
         .card-title::before {
             content: "💻";
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .project-card p {
-            color: var(--text-main);
-            line-height: 1.6;
-            font-size: 1.05rem;
-            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-size: 0.95rem;
+            margin: 0 0 15px 0;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
     <div class="custom-container">
-        <!-- Intestazione del sito -->
         <header class="main-header">
-            <h1><a href="https://github.io">TPS_4</a></h1>
+            <h1><a href="#">TPS_4</a></h1>
             <div class="subtitle">Laboratorio di Web Development • Corso TPSIT Anno 3</div>
         </header>
 
-        <!-- Contenuto Principale inserito in un Riquadro con Effetti -->
         <main>
-            <article class="project-card">
-                <h2 class="card-title">Stato del Programma</h2>
-                <p>programma es</p>
-            </article>
+            <h2 class="section-title">I Miei Esercizi Online</h2>
+            
+            <div class="projects-grid">
+                
+                <!-- CARD 1: COLLEGATA AD ANAGRAFICA.HTML -->
+                <a href="anagrafica.html" class="project-card">
+                    <div>
+                        <h3 class="card-title">Gestione Anagrafica</h3>
+                        <p>Tabella dinamica in JavaScript per l'inserimento e il salvataggio dei dati anagrafici (Nome, Cognome, Città, Età).</p>
+                    </div>
+                    <span class="card-link">Apri esercizio →</span>
+                </a>
+
+                <!-- DA QUI IN POI PUOI AGGIUNGERE I NUOVI LAVORI -->
+                <!-- Quando crei un nuovo file (es. form.html), ti basta copiare il blocco qui sotto, cambiare l'href e i testi -->
+                
+                <!-- Esempio futuro esercizio (Scommentalo togliendo i commenti quando ti servirà)
+                <a href="nome-del-tuo-prossimo-file.html" class="project-card">
+                    <div>
+                        <h3 class="card-title">Nuovo Esercizio</h3>
+                        <p>Descrizione breve di quello che fa il nuovo programma svolto in classe.</p>
+                    </div>
+                    <span class="card-link">Apri esercizio →</span>
+                </a>
+                -->
+
+            </div>
         </main>
     </div>
 
-    <!-- Script Corretto per la gestione delle ancore nei titoli (AnchorJS) -->
-    <script src="https://cloudflare.com" crossorigin="anonymous"></script>
-    <script>
-        // Attiva le ancore per i titoli h1, h2, h3
-        anchors.add('h1, h2, h3');
-    </script>
 </body>
 </html>
