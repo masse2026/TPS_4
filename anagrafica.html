@@ -39,7 +39,6 @@
             padding-bottom: 10px;
         }
 
-        /* Form Container in Dark Mode */
         .form-container {
             background: var(--card-bg);
             padding: 30px;
@@ -107,7 +106,6 @@
             transform: scale(0.98);
         }
 
-        /* Table Section in Dark Mode */
         .table-container {
             background: var(--card-bg);
             border-radius: var(--radius);
@@ -170,7 +168,6 @@
        
         <h2>Gestione Anagrafica</h2>
 
-        <!-- Area di inserimento -->
         <div class="form-container">
             <div class="form-group">
                 <label for="nome">Nome</label>
@@ -208,7 +205,6 @@
                     </tr>
                 </thead>
                 <tbody id="dati">
-                    <!-- Le righe aggiunte compariranno qui -->
                 </tbody>
             </table>
         </div>
@@ -227,7 +223,6 @@
                 return;
             }
 
-            // Mantenuta la tua esatta logica di concatenazione JavaScript con il '+'
             document.getElementById('dati').innerHTML +=
                 '<tr>' +
                     '<td>' + nome + '</td>' +
@@ -236,12 +231,8 @@
                     '<td>' + citta + '</td>' +
                     '<td>' + eta + '</td>' +
                 '</tr>';
-
-            // Pulisce i campi dopo l'inserimento
-            document.querySelectorAll('.tdati').forEach(input => input.value = '');
         }
     </script>
 
 </body>
 </html>
-
