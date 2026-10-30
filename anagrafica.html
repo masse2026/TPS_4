@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Anagrafica 1.0</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-main: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border: #e2e8f0;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Nuova struttura a griglia per l'inserimento */
+        .form-container {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colonne per bilanciare gli spazi */
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* L'indirizzo prende più spazio per estendersi bene */
+        .form-group.double-width {
+            grid-column: span 2;
+        }
+
+        /* Area pulsanti separata e pulita */
+        .button-area {
+            grid-column: span 3;
+            display: flex;
+            justify-content: flex-end;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input {
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+            background-color: #fcfcfc;
+            color: var(--text-main);
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            background-color: #ffffff;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Tabella migliorata nell'aspetto visivo */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #64748b;
+            padding: 18px 24px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            background-color: #ffffff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f1f5f9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Torna alla Home</a>
+       
+        <h2>📝 Inserimento Nuova Anagrafica</h2>
+
+        <!-- Area di inserimento riorganizzata visivamente -->
+        <div class="form-container">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="tdati" placeholder="Nome">
+            </div>
+            <div class="form-group">
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" class="tdati" placeholder="Cognome">
+            </div>
+            <div class="form-group">
+                <label for="eta">Età</label>
+                <input type="number" id="eta" class="tdati" placeholder="Età">
+            </div>
+            <div class="form-group double-width">
+                <label for="indirizzo">Indirizzo di Residenza</label>
+                <input type="text" id="indirizzo" class="tdati" placeholder="Via, Piazza, Corso...">
+            </div>
+            <div class="form-group">
+                <label for="citta">Città</label>
+                <input type="text" id="citta" class="tdati" placeholder="Città">
+            </div>
+            
+            <!-- Area pulsanti separata in basso a destra -->
+            <div class="button-area">
+                <button type="button" onclick="aggiungiRiga()">Aggiungi Record</button>
+            </div>
+        </div>
+
+        <h2>📋 Record in Database</h2>
+        <div class="table-container">
+            <table id="tabellaAnagrafica">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Indirizzo</th>
+                        <th>Città</th>
+                        <th>Età</th>
+                    </tr>
+                </thead>
+                <tbody id="dati">
+                    <!-- Le righe compariranno qui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function aggiungiRiga() {
+            const nome = document.getElementById('nome').value.trim();
+            const cognome = document.getElementById('cognome').value.trim();
+            const indirizzo = document.getElementById('indirizzo').value.trim();
+            const citta = document.getElementById('citta').value.trim();
+            const eta = document.getElementById('eta').value.trim();
+
+            if (!nome || !cognome || !indirizzo || !citta || !eta) {
+                alert("Per favore, compila tutti i campi disponibili.");
+                return;
+            }
+
+            const elementoDati = document.getElementById('dati');
+            const nuovaRiga = document.createElement('tr');
+            nuovaRiga.innerHTML = `
+                <td><b>${nome}</b></td>
+                <td>${cognome}</td>
+                <td>${indirizzo}</td>
+                <td>${citta}</td>
+                <td>${eta} anni</td>
+            `;
+
+            elementoDati.appendChild(nuovaRiga);
+
+            document.querySelectorAll('.tdati').forEach(input => input.value = '');
+        }
+    </script>
+
+</body>
+</html>
