@@ -85,7 +85,6 @@
             color: #f0f6fc;
             font-size: 1.3rem;
             margin: 0 0 12px 0;
-            text-transform: capitalize;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -113,59 +112,26 @@
 
         <main>
             <h2 class="section-title">I Miei Esercizi Online</h2>
-            <!-- Griglia vuota che si riempie da sola tramite lo script -->
-            <div class="projects-grid" id="lista-progetti"></div>
+            
+            <div class="projects-grid">
+                
+                <!-- CARD ANAGRAFICA (INSERITA MANUALE, QUESTA FUNZIONA DI SICURO) -->
+                <a href="anagrafica.html" class="project-card">
+                    <div>
+                        <h3 class="card-title">💻 Anagrafica</h3>
+                        <p>Applicazione web per la gestione e l'inserimento di dati in una tabella dinamica.</p>
+                    </div>
+                    <span class="card-link">Apri lavoro →</span>
+                </a>
+
+                <!-- COME AGGIUNGERE I PROSSIMI: 
+                     Ti basterà copiare da qui sotto fino a </a>, 
+                     incollarlo subito qui e cambiare il nome del file in href -->
+
+            </div>
         </main>
     </div>
 
-    <script>
-        // Configurazione account GitHub basata sul tuo repository reale
-        const username = 'masse2026'; 
-        const repo = 'TPS_4'; 
-
-        async function caricaEsercizi() {
-            const container = document.getElementById('lista-progetti');
-            try {
-                // Chiamata alle API di GitHub per leggere i file del repository
-                const response = await fetch(`https://github.com{username}/${repo}/contents`);
-                const files = await response.json();
-
-                // Ripulisce il contenitore prima di inserire i dati
-                container.innerHTML = '';
-
-                files.forEach(file => {
-                    // Filtra solo i file con estensione .html ignorando la home
-                    if (file.name.endsWith('.html') && file.name.toLowerCase() !== 'index.html' && file.name.toLowerCase() !== 'index.html') {
-                        
-                        // Rende il titolo più carino togliendo l'estensione del file
-                        const titoloPulito = file.name.replace('.html', '').replace('_', ' ').replace('-', ' ');
-                        
-                        const card = document.createElement('a');
-                        card.href = file.name;
-                        card.className = 'project-card';
-                        card.innerHTML = `
-                            <div>
-                                <h3 class="card-title">💻 ${titoloPulito}</h3>
-                                <p>Applicazione web caricata nel repository del corso. Clicca sotto per avviarla ed eseguirla nel browser.</p>
-                            </div>
-                            <span class="card-link">Apri lavoro →</span>
-                        `;
-                        container.appendChild(card);
-                    }
-                });
-
-                // Se non ci sono altri file oltre a index.html mostra un avviso pulito
-                if (container.children.length === 0) {
-                    container.innerHTML = "<p style='color: var(--text-muted);'>Nessun file di esercizio trovato oltre alla home.</p>";
-                }
-
-            } catch (error) {
-                container.innerHTML = "<p style='color: #ff6b6b;'>Errore nel caricamento dei file da GitHub. Riprova più tardi.</p>";
-            }
-        }
-
-        // Avvia la funzione al caricamento della pagina
-        caricaEsercizi();
-    </script>
 </body>
 </html>
+
