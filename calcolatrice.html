@@ -37,7 +37,7 @@
 </head>
 <body>
 
-    <div class="calcolatrice">
+  <div class="calcolatrice">
         <h2>La mia Calcolatrice</h2>
 
         <!-- Prima casella per il primo numero -->
@@ -82,9 +82,14 @@
                     finale = n1 / n2;
                 }
             }
-            document.getElementById("risultato").innerText = "Risultato: " + finale;
+
+            // Converte il numero in stringa (se non è già la stringa "imp")
+            var finaleStringa = String(finale);
+
+            document.getElementById("risultato").innerText = "Risultato: " + finaleStringa;
         }
     </script>
 
 </body>
 </html>
+
