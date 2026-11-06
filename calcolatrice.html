@@ -55,22 +55,17 @@
         <button onclick="calcola('/')">÷</button>
 
         <br><br>
-
-        <!-- Qui comparirà il risultato -->
+        
         <h3 id="risultato">Risultato: 0</h3>
     </div>
 
     <script>
         function calcola(operazione) {
-            // 1. Prendiamo i valori scritti nelle due caselle
-            // Usiamo Number() per dire a JavaScript di trattarli come numeri e non come testo
             var n1 = Number(document.getElementById("num1").value);
             var n2 = Number(document.getElementById("num2").value);
             
-            // 2. Creiamo una variabile per salvare il risultato del calcolo
             var finale = 0;
 
-            // 3. Controlliamo quale bottone è stato premuto
             if (operazione == '+') {
                 finale = n1 + n2;
             }
@@ -87,8 +82,6 @@
                     finale = n1 / n2;
                 }
             }
-
-            // 4. Scriviamo il risultato finale dentro la pagina HTML
             document.getElementById("risultato").innerText = "Risultato: " + finale;
         }
     </script>
