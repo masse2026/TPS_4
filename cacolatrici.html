@@ -1,259 +1,127 @@
 <!DOCTYPE html>
-<html lang="it-IT">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcolatrice | TPS_4</title>
+    <title>La Mia Prima Calcolatrice</title>
     <style>
-        :root {
-            --bg-color: #0d1117;
-            --bg-gradient: radial-gradient(circle at top right, #161b22 0%, #0d1117 100%);
-            --calc-bg: rgba(22, 27, 34, 0.8);
-            --border-color: rgba(48, 54, 61, 0.8);
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --accent-color: #58a6ff;
-            --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
-            --btn-bg: #21262d;
-            --btn-hover: #30363d;
-            --btn-op: rgba(88, 166, 255, 0.15);
-            --btn-op-hover: rgba(88, 166, 255, 0.25);
-        }
-
+        /* Uno stile semplice, scuro e ordinato per i bottoni */
         body {
-            background: var(--bg-gradient);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: opacity 0.2s;
-        }
-
-        .back-btn:hover {
-            opacity: 0.8;
-        }
-
-        .calculator {
-            background: var(--calc-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 24px;
-            width: 320px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .calculator-title {
+            background-color: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0 0 20px 0;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            padding-top: 50px;
         }
-
-        .display {
+        .contenitore {
+            background-color: #2d2d2d;
+            width: 250px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        #schermo {
             width: 100%;
-            background: rgba(13, 17, 23, 0.9);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px;
-            box-sizing: border-box;
+            height: 40px;
+            font-size: 20px;
             text-align: right;
-            font-size: 2rem;
-            font-family: monospace;
-            color: var(--text-main);
             margin-bottom: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
+            padding: 5px;
+            box-sizing: border-box;
         }
-
-        .buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+        .riga {
+            margin-bottom: 10px;
         }
-
         button {
-            border: none;
-            border-radius: 12px;
-            padding: 18px;
-            font-size: 1.25rem;
-            font-weight: 600;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
             cursor: pointer;
-            color: var(--text-main);
-            background-color: var(--btn-bg);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            user-select: none;
         }
-
-        button:hover {
-            background-color: var(--btn-hover);
-            transform: translateY(-2px);
+        .pulsante-cancella {
+            width: 100px;
+            background-color: #ff4d4d;
+            color: white;
         }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        button.operator {
-            color: #58a6ff;
-            background-color: var(--btn-op);
-        }
-
-        button.operator:hover {
-            background-color: var(--btn-op-hover);
-        }
-
-        button.clear {
-            color: #ff7b72;
-            background-color: rgba(255, 123, 114, 0.1);
-        }
-
-        button.clear:hover {
-            background-color: rgba(255, 123, 114, 0.2);
-        }
-
-        button.equal {
-            background: var(--accent-gradient);
-            color: #ffffff;
-            grid-column: span 2;
-        }
-
-        button.equal:hover {
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
-            opacity: 0.9;
+        .pulsante-uguale {
+            background-color: #4caf50;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-btn">← Torna alla Home</a>
+    <!-- Link per tornare alla pagina principale di GitHub Pages -->
+    <p><a href="index.html" style="color: #58a6ff;">← Torna alla Home</a></p>
 
-    <div class="calculator">
-        <div class="calculator-title">CALCOLATRICE 1.0</div>
-        <div id="display" class="display">0</div>
+    <div class="contenitore">
+        <h2>Calcolatrice</h2>
         
-        <div class="buttons-grid">
-            <button class="clear" onclick="clearDisplay()">C</button>
-            <button class="operator" onclick="appendOperator('/')">/</button>
-            <button class="operator" onclick="appendOperator('*')">×</button>
-            <button class="operator" onclick="deleteLast()">⌫</button>
+        <!-- Lo schermo dove si vedono i numeri -->
+        <input type="text" id="schermo" value="" readonly>
 
-            <button onclick="appendNumber('7')">7</button>
-            <button onclick="appendNumber('8')">8</button>
-            <button onclick="appendNumber('9')">9</button>
-            <button class="operator" onclick="appendOperator('-')">-</button>
+        <!-- Riga 1: I bottoni di controllo -->
+        <div class="riga">
+            <button class="pulsante-cancella" onclick="cancella()">C</button>
+            <button onclick="aggiungi('/')">/</button>
+            <button onclick="aggiungi('*')">×</button>
+        </div>
 
-            <button onclick="appendNumber('4')">4</button>
-            <button onclick="appendNumber('5')">5</button>
-            <button onclick="appendNumber('6')">6</button>
-            <button class="operator" onclick="appendOperator('+')">+</button>
+        <!-- Riga 2: Numeri 7, 8, 9 e il Meno -->
+        <div class="riga">
+            <button onclick="aggiungi('7')">7</button>
+            <button onclick="aggiungi('8')">8</button>
+            <button onclick="aggiungi('9')">9</button>
+            <button onclick="aggiungi('-')">-</button>
+        </div>
 
-            <button onclick="appendNumber('1')">1</button>
-            <button onclick="appendNumber('2')">2</button>
-            <button onclick="appendNumber('3')">3</button>
-            <button class="equal" onclick="calculate()">=</button>
+        <!-- Riga 3: Numeri 4, 5, 6 e il Più -->
+        <div class="riga">
+            <button onclick="aggiungi('4')">4</button>
+            <button onclick="aggiungi('5')">5</button>
+            <button onclick="aggiungi('6')">6</button>
+            <button onclick="aggiungi('+')">+</button>
+        </div>
 
-            <button onclick="appendNumber('0')" style="grid-column: span 2;">0</button>
-            <button onclick="appendNumber('.')">,</button>
+        <!-- Riga 4: Numeri 1, 2, 3 e il tasto Uguale -->
+        <div class="riga">
+            <button onclick="aggiungi('1')">1</button>
+            <button onclick="aggiungi('2')">2</button>
+            <button onclick="aggiungi('3')">3</button>
+            <button class="pulsante-uguale" onclick="calcola()">=</button>
+        </div>
+
+        <!-- Riga 5: Lo Zero e il Punto decimale -->
+        <div class="riga">
+            <button onclick="aggiungi('0')" style="width: 100px;">0</button>
+            <button onclick="aggiungi('.')">,</button>
         </div>
     </div>
 
     <script>
-        const display = document.getElementById('display');
-        let currentInput = '0';
-        let shouldResetDisplay = false;
+        // Questa variabile prende lo schermo HTML per poterlo modificare
+        var schermo = document.getElementById('schermo');
 
-        function appendNumber(number) {
-            if (currentInput === '0' || shouldResetDisplay) {
-                currentInput = number;
-                shouldResetDisplay = false;
-            } else {
-                // Evita punti decimali duplicati nello stesso numero
-                if (number === '.' && currentInput.split(/[\+\-\*\/]/).pop().includes('.')) return;
-                currentInput += number;
-            }
-            updateDisplay();
+        // Funzione 1: Aggiunge il numero o il segno cliccato sullo schermo
+        function aggiungi(valore) {
+            schermo.value = schermo.value + valore;
         }
 
-        function appendOperator(operator) {
-            if (shouldResetDisplay) shouldResetDisplay = false;
-            
-            const lastChar = currentInput.slice(-1);
-            // Se l'ultimo carattere è già un operatore, lo sostituisce
-            if (['+', '-', '*', '/'].includes(lastChar)) {
-                currentInput = currentInput.slice(0, -1) + operator;
-            } else {
-                currentInput += operator;
-            }
-            updateDisplay();
+        // Funzione 2: Svuota completamente lo schermo (tasto C)
+        function cancella() {
+            schermo.value = '';
         }
 
-        function clearDisplay() {
-            currentInput = '0';
-            updateDisplay();
-        }
-
-        function deleteLast() {
-            if (currentInput.length > 1) {
-                currentInput = currentInput.slice(0, -1);
-            } else {
-                currentInput = '0';
-            }
-            updateDisplay();
-        }
-
-        function calculate() {
+        // Funzione 3: Fa il calcolo matematico usando la funzione base "eval"
+        function calcola() {
             try {
-                // Sostituisce i caratteri di visualizzazione con quelli operativi se necessario
-                let result = eval(currentInput);
-                
-                // Gestisce divisione per zero o output non numerici
-                if (!isFinite(result)) {
-                    currentInput = 'Errore';
-                } else {
-                    // Arrotonda a 8 decimali per evitare problemi di virgola mobile (es: 0.1 + 0.2)
-                    currentInput = parseFloat(result.toFixed(8)).toString();
-                }
-                shouldResetDisplay = true;
-            } catch (error) {
-                currentInput = 'Errore';
-                shouldResetDisplay = true;
+                // eval prende la scritta sullo schermo (es. "5+3") e fa il calcolo automatico
+                schermo.value = eval(schermo.value);
+            } catch (errore) {
+                // Se scrivi qualcosa di matematicamente sbagliato (es. "5++2"), esce la scritta Errore
+                schermo.value = 'Errore';
             }
-            updateDisplay();
-        }
-
-        function updateDisplay() {
-            // Sostituisce graficamente gli operatori per renderli più puliti a schermo
-            let formattedInput = currentInput
-                .replace(/\*/g, ' × ')
-                .replace(/\//g, ' ÷ ')
-                .replace(/\+/g, ' + ')
-                .replace(/\-/g, ' - ');
-            display.innerText = formattedInput;
         }
     </script>
+
 </body>
 </html>
