@@ -37,59 +37,66 @@
 </head>
 <body>
 
-  <div class="calcolatrice">
-        <h2>La mia Calcolatrice</h2>
+ <style>
+    /* Rimuove le freccette sui browser basati su WebKit (Chrome, Safari, Edge, Opera) */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
 
-        <!-- Prima casella per il primo numero -->
-        <input type="number" id="num1" placeholder="Num 1">
+<div class="calcolatrice">
+    <h2>La mia Calcolatrice</h2>
 
-        <!-- Seconda casella per il secondo numero -->
-        <input type="number" id="num2" placeholder="Num 2">
+    <!-- Prima casella per il primo numero -->
+    <input type="number" id="num1" placeholder="Num 1">
 
-        <br><br>
+    <!-- Seconda casella per il secondo numero -->
+    <input type="number" id="num2" placeholder="Num 2">
 
-        <!-- I bottoni per fare le operazioni -->
-        <button onclick="calcola('+')">+</button>
-        <button onclick="calcola('-')">-</button>
-        <button onclick="calcola('*')">×</button>
-        <button onclick="calcola('/')">÷</button>
+    <br><br>
 
-        <br><br>
+    <!-- I bottoni per fare le operazioni -->
+    <button onclick="calcola('+')">+</button>
+    <button onclick="calcola('-')">-</button>
+    <button onclick="calcola('*')">×</button>
+    <button onclick="calcola('/')">÷</button>
+
+    <br><br>
+    
+    <h3 id="risultato">Risultato: 0</h3>
+</div>
+
+<script>
+    function calcola(operazione) {
+        var n1 = Number(document.getElementById("num1").value);
+        var n2 = Number(document.getElementById("num2").value);
         
-        <h3 id="risultato">Risultato: 0</h3>
-    </div>
+        var finale = 0;
 
-    <script>
-        function calcola(operazione) {
-            var n1 = Number(document.getElementById("num1").value);
-            var n2 = Number(document.getElementById("num2").value);
-            
-            var finale = 0;
-
-            if (operazione == '+') {
-                finale = n1 + n2;
-            }
-            if (operazione == '-') {
-                finale = n1 - n2;
-            }
-            if (operazione == '*') {
-                finale = n1 * n2;
-            }
-            if (operazione == '/') {
-                if (n2 == 0) {
-                    finale = "imp";
-                } else {
-                    finale = n1 / n2;
-                }
-            }
-
-            // Converte il numero in stringa (se non è già la stringa "imp")
-            var finaleStringa = String(finale);
-
-            document.getElementById("risultato").innerText = "Risultato: " + finaleStringa;
+        if (operazione == '+') {
+            finale = n1 + n2;
         }
-    </script>
+        if (operazione == '-') {
+            finale = n1 - n2;
+        }
+        if (operazione == '*') {
+            finale = n1 * n2;
+        }
+        if (operazione == '/') {
+            if (n2 == 0) {
+                finale = "imp";
+            } else {
+                finale = n1 / n2;
+            }
+        }
+        var finaleStringa = String(finale);
 
-</body>
-</html>
+        document.getElementById("risultato").innerText = "Risultato: " + finaleStringa;
+    }
+</script>
 
